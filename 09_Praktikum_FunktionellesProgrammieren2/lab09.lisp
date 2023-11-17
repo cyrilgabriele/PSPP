@@ -12,7 +12,6 @@
   (lambda (&rest more-args)
     (apply f (append args more-args))))
 
-;;FROM DOCU
 ;; Pipeline: Make a function that composes a 
 ;; sequence of functions 
 ;; 
@@ -23,7 +22,12 @@
            funcs
            :initial-value args))))
 
+(defmacro setfun (symb fun)
+  `(prog1 ',symb (setf (symbol-function ',symb) ,fun)))
 
+;; -----------------------------------------------------------------------------------------------------------------
+
+;;BEGINN OF MY CODE
 ;; getprop without currying
 (defun getprop-fn (key list)
 (cdr (assoc key list)))
@@ -31,9 +35,6 @@
 (print(getprop-fn :result '((:RESULT . "SUCCESS") (:INTERFACE-VERSION . "1.0.3"))))
 
 ;; getprop with currying
-(defmacro setfun (symb fun)
-  `(prog1 ',symb (setf (symbol-function ',symb) ,fun)))
-
 (setfun getprop (curry-n #'getprop-fn 2))
 
 (setfun result (getprop :result)) ;; hier wird die Zurückgegebene Funktion (lambda function aus curry-n) in result gespeichert
@@ -73,9 +74,26 @@
 (setfun return_reject (reject (lambda (x) (< 3 x))))
 (print (funcall #'return_reject '(1 2 3 4 5)))
 
-(filter (prop-eq :member "Scott") *tasks*)
-
-
 ;; prop-eq
 (defun prop-eq (prop val)
   (pipeline (getprop prop) (partial #'equal val)))
+
+(print (filter (prop-eq :member "Scott") *tasks*))
+(print (filter (prop-eq :member "Scott")))
+
+;; pick functions
+(defun pick-fn (attrs obj)
+  (remove-if-not #'(lambda (el) (member (car el) attrs)) obj))
+
+(print (format t "~% pick-fn"))
+(print (funcall #'pick-fn '(:title) '((:RESULT . "SUCCESS") (:INTERFACE-VERSION . "1.0.3") (:DUE-DATE . "17.11.2023") (:TITLE . "PSPP_Lab09"))))
+
+(setfun pick (curry-n #'pick-fn 2))
+(setfun pick-by-duedate (pick '(:due-date)))
+(print (format t "~%pick curryied"))
+(print (funcall #'pick-by-duedate '((:RESULT . "SUCCESS") (:INTERFACE-VERSION . "1.0.3") (:DUE-DATE . "17.11.2023"))))
+
+;; implementation w/ forall function
+(setfun forall (curry-n #'mapcar 2))
+(print (format t "~%forall w/ pick"))
+(print (forall (pick '(:due-date :title)) *tasks*))
