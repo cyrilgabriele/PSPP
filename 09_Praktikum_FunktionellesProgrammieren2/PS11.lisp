@@ -1,4 +1,4 @@
-;; 1. Funktionale Problemlösung
+;; file for the hand in of the lab
 ;; helper functions provided from PSPP-Doc
 (defun curry-n (f numargs)
   (lambda (&rest args)
@@ -25,10 +25,21 @@
 (defmacro setfun (symb fun)
   `(prog1 ',symb (setf (symbol-function ',symb) ,fun)))
 
+;; Split string at character
+;; 
+(defun string-split (c strg)
+  (let ((end (position c strg)))
+    (cond (end (cons (subseq strg 0 end)
+            (string-split c (subseq strg (+ end 1)))))
+          (t (list (subseq strg 0))))))
+
+;; Example
+;;
+;(string-split #\, "eins,zwei,drei")
+; --> ("eins" "zwei" "drei")
+
 ;; -----------------------------------------------------------------------------------------------------------------
 
-;;BEGINN OF MY CODE
-;; getprop without currying
 (defun getprop-fn (key list)
 (cdr (assoc key list)))
 
@@ -49,9 +60,8 @@
   (remove-if f seq))
 
 (setfun getprop (curry-n #'getprop-fn 2))
-(print (getprop :tasks (with-open-file (stream "tasks.lisp" :direction :input) (read stream))))
+;; (print (getprop :tasks (with-open-file (stream "tasks.lisp" :direction :input) (read stream))))
 (print (getprop :tasks))
-(print (defvar *tasks* (getprop :tasks (with-open-file (stream "tasks.lisp" :direction :input) (read stream)))))
 
 ;; here passed a function to filter-fn which checks if the value is greater than 3 => applied to the list
 ;; values which are greater than 3 are returned
@@ -78,7 +88,6 @@
 (defun prop-eq (prop val)
   (pipeline (getprop prop) (partial #'equal val)))
 
-(print (filter (prop-eq :member "Scott") *tasks*))
 (print (filter (prop-eq :member "Scott")))
 
 ;; pick functions
@@ -86,14 +95,47 @@
   (remove-if-not #'(lambda (el) (member (car el) attrs)) obj))
 
 (print (format t "~% pick-fn"))
-(print (funcall #'pick-fn '(:title) '((:RESULT . "SUCCESS") (:INTERFACE-VERSION . "1.0.3") (:DUE-DATE . "17.11.2023") (:TITLE . "PSPP_Lab09"))))
+(print (funcall #'pick-fn '(:title) '((:RESULT . "SUCCESS") (:INTERFACE-VERSION . "1.0.3") (:DUE-DATE . "17/11/2023") (:TITLE . "PSPP_Lab09"))))
 
 (setfun pick (curry-n #'pick-fn 2))
 (setfun pick-by-duedate (pick '(:due-date)))
 (print (format t "~%pick curryied"))
-(print (funcall #'pick-by-duedate '((:RESULT . "SUCCESS") (:INTERFACE-VERSION . "1.0.3") (:DUE-DATE . "17.11.2023"))))
+(print (funcall #'pick-by-duedate '((:RESULT . "SUCCESS") (:INTERFACE-VERSION . "1.0.3") (:DUE-DATE . "17/11/2023"))))
 
 ;; implementation w/ forall function
 (setfun forall (curry-n #'mapcar 2))
 (print (format t "~%forall w/ pick"))
-(print (forall (pick '(:due-date :title)) *tasks*))
+
+
+;; implementation of date-to-universal
+(print (string-split #\/ "17/11/2023"))
+
+(defun parse-date-int (items)
+  (map 'list #'(lambda (x) (parse-integer x)) items))
+
+(print (first (parse-date-int (string-split #\/ "17/11/2023"))))
+
+(defun date-to-universal (date-string)
+  (encode-universal-time 00 00 00
+    (first (parse-date-int (string-split #\/ date-string)))
+    (second (parse-date-int (string-split #\/ date-string)))
+    (third (parse-date-int (string-split #\/ date-string)))))
+
+(print (first (parse-date-int (string-split #\/ "17/11/2023"))))
+(print (second (parse-date-int (string-split #\/ "17/11/2023"))))
+(print (third (parse-date-int (string-split #\/ "17/11/2023"))))
+(print (date-to-universal "17/11/2023"))
+
+(defun sort-by-fn (f seq)
+  (sort (copy-list seq)
+    (lambda (a b) (< (funcall f a) (funcall f b)))))
+
+(setfun sort-by (curry-n #'sort-by-fn 2))
+
+(defun open-tasks (name)
+  (pipeline
+    (getprop :tasks)
+    (filter (prop-eq :member name))
+    (reject (prop-eq :complete t))
+    (forall (pick '(:id :due-date :title :priority)))
+    (sort-by (pipeline (getprop :due-date) #'date-to-universal))))
