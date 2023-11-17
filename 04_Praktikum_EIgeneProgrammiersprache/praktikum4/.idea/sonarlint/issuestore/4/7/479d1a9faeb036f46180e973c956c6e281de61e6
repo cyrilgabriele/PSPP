@@ -1,0 +1,21 @@
+
+`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+n	java:S117û"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿôŠÂ8¿½¬¥±1
+Q	java:S125"<This block of commented-out lines of code should be removed.(‚¥Ý
+V	java:S125"<This block of commented-out lines of code should be removed.(þÑ×¥üÿÿÿÿ
+T	java:S106*"9Replace this use of System.out or System.err by a logger.(ÝÅ²8ý½¬¥±1
+U	java:S106?"9Replace this use of System.out or System.err by a logger.(ÞÛß8ÿ½¬¥±1
+X	java:S125G"<This block of commented-out lines of code should be removed.(¸á“÷8ö½¬¥±1
+]	java:S125r"<This block of commented-out lines of code should be removed.(­¿»òÿÿÿÿÿ8¦ÿ´¥±1
+V	java:S106…"9Replace this use of System.out or System.err by a logger.(õŒµÔ8‚¾¬¥±1
+^	java:S125‹"<This block of commented-out lines of code should be removed.(†‰—üÿÿÿÿ8¨ÿ´¥±1
+V	java:S106°"9Replace this use of System.out or System.err by a logger.(õŒµÔ8„¾¬¥±1
+Y	java:S125¸"<This block of commented-out lines of code should be removed.(õË«£8€¾¬¥±1
+V	java:S106Æ"9Replace this use of System.out or System.err by a logger.(õŒµÔ8†¾¬¥±1
+V	java:S106Ð"9Replace this use of System.out or System.err by a logger.(õŒµÔ8‡¾¬¥±1
+Y	java:S125Ø"<This block of commented-out lines of code should be removed.(ÿ©öª8ƒ¾¬¥±1
+V	java:S106ã"9Replace this use of System.out or System.err by a logger.(õŒµÔ8ˆ¾¬¥±1
+V	java:S106ô"9Replace this use of System.out or System.err by a logger.(õŒµÔ8ú²²¥±1
+P
+java:S1135"2Complete the task associated to this TODO comment.(¼Õ®Ë8‡¾¬¥±1
+V	java:S106Š"9Replace this use of System.out or System.err by a logger.(õŒµÔ8Ùª³¥±1

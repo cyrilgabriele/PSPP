@@ -1,0 +1,11 @@
+(defun map-list (f lst)
+	(if (null lst) nil
+	;;else
+	(cons (funcall f (car lst))
+		(map-list f (cdr lst)))))
+
+
+(defun list-sqr (elmnt)
+	(* elmnt elmnt))
+
+(print(map-list 'list-sqr '(1 2 3 4 5 6)))

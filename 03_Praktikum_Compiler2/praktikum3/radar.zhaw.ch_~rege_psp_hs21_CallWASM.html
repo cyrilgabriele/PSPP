@@ -1,0 +1,16 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head></head>
+<body>
+  <script type="text/javascript">
+	  fetch("Factorial.wasm")
+		.then(response => response.arrayBuffer())
+		.then(bytes => WebAssembly.instantiate(bytes, {imports: {}}))
+		.then(results => {
+		  document.getElementById("demo").innerHTML = results.instance.exports.factorial(10);
+	  });
+  </script>
+  <h1>Test WASM<h1>
+  <p id="demo"></p>
+</body>
+</html>

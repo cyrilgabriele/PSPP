@@ -1,0 +1,16 @@
+
+n
+java:S3008
+"XRename this field "numbers_stack" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ž¾Óí
+f
+java:S1149
+"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(Ž¾Óí
+M	java:S106"9Replace this use of System.out or System.err by a logger.(ÝÅ²
+V	java:S125-"<This block of commented-out lines of code should be removed.(š¥êºþÿÿÿÿ
+N	java:S1067"9Replace this use of System.out or System.err by a logger.(ÞÛß
+Q	java:S125B"<This block of commented-out lines of code should be removed.(“ñš¸
+N	java:S106N"9Replace this use of System.out or System.err by a logger.(ëôßÊ
+S	java:S106Q"9Replace this use of System.out or System.err by a logger.(·ùßóýÿÿÿÿ
+S	java:S106W"9Replace this use of System.out or System.err by a logger.(­û¤žþÿÿÿÿ
+O
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8Šú”ã¬1

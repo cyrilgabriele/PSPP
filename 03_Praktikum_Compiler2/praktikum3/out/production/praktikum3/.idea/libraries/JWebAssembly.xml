@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="JWebAssembly">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/wasm_tools/JWebAssembly.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

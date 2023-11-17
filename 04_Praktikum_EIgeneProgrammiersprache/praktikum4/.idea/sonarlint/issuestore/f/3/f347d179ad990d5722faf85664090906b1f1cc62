@@ -1,0 +1,46 @@
+
+a	java:S112¦"FDefine and throw a dedicated exception instead of using a generic one.(ã©áàùÿÿÿÿ
+\	java:S112¥"FDefine and throw a dedicated exception instead of using a generic one.(„ñÔ²
+u
+java:S2293·"YReplace the type specification in this constructor call with the diamond operator ("<>").(ƒÿöµüÿÿÿÿ
+Y
+java:S6208w"CMerge the previous cases into this one using comma-separated label.(‘ó’Ó
+X
+java:S6208~"CMerge the previous cases into this one using comma-separated label.(‰ÄŒ>
+a
+java:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ş™ÅŞ
+j
+java:S1104"OMake pos a static final constant or non-public and provide accessors if needed.(ı°¶ëşÿÿÿÿ
+e
+java:S1104’"NMake la a static final constant or non-public and provide accessors if needed.(´ÿ™î
+m
+java:S1104“"QMake token a static final constant or non-public and provide accessors if needed.(¤¦Ûûÿÿÿÿ
+j
+java:S1104”"SMake laToken a static final constant or non-public and provide accessors if needed.(ÓØÂÎ
+D
+java:S1444")Make this "public static pos" field final(ı°¶ëşÿÿÿÿ
+?
+java:S1444’"(Make this "public static la" field final(´ÿ™î
+G
+java:S1444“"+Make this "public static token" field final(¤¦Ûûÿÿÿÿ
+D
+java:S1444”"-Make this "public static laToken" field final(ÓØÂÎ
+k
+java:S1149"VReplace the synchronized class "Hashtable" by an unsynchronized one such as "HashMap".(„‡«
+
+7	java:S131""Add a default case to this switch.(ş™ÅŞ
+8
+java:S2153"Remove the unboxing of "k".(¶²Ê°8›ÕÃ±1
+m
+java:S3776$"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(ÀŒ÷ëÿÿÿÿÿ
+7	java:S131*""Add a default case to this switch.(ş™ÅŞ
+O	java:S106¯"9Replace this use of System.out or System.err by a logger.(ÆÀûı
+T	java:S106³"9Replace this use of System.out or System.err by a logger.(ªÓ¼áşÿÿÿÿ
+_
+java:S5738¸"HRemove this call to a deprecated method, it has been marked for removal.(À¦Íô
+d
+java:S5738¹"HRemove this call to a deprecated method, it has been marked for removal.(âíÕãøÿÿÿÿ
+d
+java:S5738º"HRemove this call to a deprecated method, it has been marked for removal.(ôçˆ—ûÿÿÿÿ
+_
+java:S5738»"HRemove this call to a deprecated method, it has been marked for removal.(¢·Éì
