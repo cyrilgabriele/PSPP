@@ -91,7 +91,7 @@
 (defun prop-eq (prop val)
   (pipeline (getprop prop) (partial #'equal val)))
 
-(print (filter (prop-eq :member "Scott") *tasks*))
+;; (print (filter (prop-eq :member "Scott") *tasks*))
 (print (filter (prop-eq :member "Scott")))
 
 ;; pick functions
@@ -99,34 +99,35 @@
   (remove-if-not #'(lambda (el) (member (car el) attrs)) obj))
 
 (print (format t "~% pick-fn"))
-(print (funcall #'pick-fn '(:title) '((:RESULT . "SUCCESS") (:INTERFACE-VERSION . "1.0.3") (:DUE-DATE . "17/11/2023") (:TITLE . "PSPP_Lab09"))))
+(print (funcall #'pick-fn '(:title) '((:RESULT . "SUCCESS") (:INTERFACE-VERSION . "1.0.3") (:DUE-DATE . "11/17/2023") (:TITLE . "PSPP_Lab09"))))
 
 (setfun pick (curry-n #'pick-fn 2))
 (setfun pick-by-duedate (pick '(:due-date)))
 (print (format t "~%pick curryied"))
-(print (funcall #'pick-by-duedate '((:RESULT . "SUCCESS") (:INTERFACE-VERSION . "1.0.3") (:DUE-DATE . "17/11/2023"))))
+(print (funcall #'pick-by-duedate '((:RESULT . "SUCCESS") (:INTERFACE-VERSION . "1.0.3") (:DUE-DATE . "11/17/2023"))))
 
 ;; implementation w/ forall function
 (setfun forall (curry-n #'mapcar 2))
 (print (format t "~%forall w/ pick"))
-(print (forall (pick '(:due-date :title)) *tasks*))
+;; (print (forall (pick '(:due-date :title)) *tasks*))
 
 
 ;; implementation of date-to-universal
-(print (string-split #\/ "17/11/2023"))
+;; dates in US format!!!
+(print (string-split #\/ "11/17/2023"))
 
 (defun parse-date-int (items)
   (map 'list #'(lambda (x) (parse-integer x)) items))
 
-(print (first (parse-date-int (string-split #\/ "17/11/2023"))))
+(print (first (parse-date-int (string-split #\/ "11/17/2023"))))
 
 (defun date-to-universal (date-string)
   (encode-universal-time 00 00 00
-    (first (parse-date-int (string-split #\/ date-string)))
     (second (parse-date-int (string-split #\/ date-string)))
+    (first (parse-date-int (string-split #\/ date-string)))
     (third (parse-date-int (string-split #\/ date-string)))))
 
-(print (date-to-universal "17/11/2023"))
+(print (date-to-universal "11/17/2023"))
 
 (defun sort-by-fn (f seq)
   (sort (copy-list seq)
@@ -142,4 +143,7 @@
     (forall (pick '(:id :due-date :title :priority)))
     (sort-by (pipeline (getprop :due-date) #'date-to-universal))))
 
-(funcall (open-tasks "Scott") *tasks*)
+;; test call => if NOT commented: (print (forall (pick '(:due-date :title)) *tasks*)) must get commented out and vice versa!!!
+;;(print *tasks*)
+;; (print ((funcall #'open-tasks '("Scott") *tasks*)))
+(print (open-tasks "Scott") *tasks*)
