@@ -14,3 +14,8 @@ def doload(url):
     data = html.unescape(contents)
     withouttags = re.sub(r"<(.|\s)*?>", " ", data)
     return re.sub(r"\s+", " ", withouttags).split()
+
+
+if __name__ == '__main__':
+    result = doload("https://lite.cnn.com")
+    print(result)
