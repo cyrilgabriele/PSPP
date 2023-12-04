@@ -22,4 +22,4 @@ approxPi := (pointsInsideCircle / numberOfPoints) * 4.0.
 
 Transcript open.
 Transcript show: approxPi; cr.
-	
+
