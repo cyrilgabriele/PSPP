@@ -1,0 +1,3 @@
+module montecarlo {
+    requires random;
+}

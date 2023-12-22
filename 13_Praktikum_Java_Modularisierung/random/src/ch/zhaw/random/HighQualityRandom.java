@@ -1,3 +1,4 @@
+package ch.zhaw.random;
 /*******************************************************************************
  * Copyright 2012 the original author or authors. 
  * This class implements a better random number generator than the standard LCG that is implemented in java.util.Random.
@@ -17,10 +18,8 @@
  * limitations under the License. 
  ******************************************************************************/
  
-import java.util.Random; 
-import java.util.concurrent.locks.Lock; 
-import java.util.concurrent.locks.ReentrantLock; 
- 
+import java.util.Random;
+
 /**
  * Produces high quality random numbers. Taken from http://www.javamex.com/tutorials/random_numbers/numerical_recipes.shtml, based on algorithm in Numerical Recipes: The Art of Scientific Computing, 
  * Press et. al. (2007) 

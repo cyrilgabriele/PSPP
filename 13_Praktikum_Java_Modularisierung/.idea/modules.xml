@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/13_Praktikum_Java_Modularisierung.iml" filepath="$PROJECT_DIR$/13_Praktikum_Java_Modularisierung.iml" />
+      <module fileurl="file://$PROJECT_DIR$/montecarlo/montecarlo.iml" filepath="$PROJECT_DIR$/montecarlo/montecarlo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/random/random.iml" filepath="$PROJECT_DIR$/random/random.iml" />
+    </modules>
+  </component>
+</project>
